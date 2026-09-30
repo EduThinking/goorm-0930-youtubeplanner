@@ -53,6 +53,7 @@ YouTube 시장 데이터를 분석해 인기 콘텐츠의 성공 패턴을 찾�
 - 콘텐츠 유형 필터 변경 후 대표 기획안과 하위 카드가 함께 갱신되도록 렌더링 로직을 통합했습니다.
 - 외부 API 키가 프런트엔드에 노출되지 않도록 현재 버전은 샘플 데이터 모드로 구성했습니다.
 - 네트워크 연결 없이도 핵심 사용자 흐름을 확인할 수 있도록 데모 데이터와 상태 메시지를 추가했습니다.
+- Vercel이 저장소 루트에서 진입 파일을 찾지 못해 404를 반환하던 문제를 `vercel.json` 정적 경로 설정으로 수정했습니다.
 
 ## 기술 구성
 
@@ -85,6 +86,7 @@ python -m http.server 4173 --directory dist
 │  └─ images/
 │     ├─ tubeplanner-market-intelligence.png
 │     └─ tubeplanner-top10-patterns.png
+├─ vercel.json
 └─ README.md
 ```
 
