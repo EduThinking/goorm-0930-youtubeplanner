@@ -1,0 +1,3 @@
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('revealed');observer.unobserve(entry.target)}})},{threshold:.12});
+document.querySelectorAll('.pain-grid article,.flow-grid article,.showcase-copy,.showcase-visual,.plan-card,.numbers>div,.compare-wrap,.accordion details').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(24px)';el.style.transition='opacity .65s ease, transform .65s ease';observer.observe(el)});
+const style=document.createElement('style');style.textContent='.revealed{opacity:1!important;transform:translateY(0)!important}';document.head.appendChild(style);

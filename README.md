@@ -15,6 +15,13 @@ YouTube 시장 데이터를 분석해 인기 콘텐츠의 성공 패턴을 찾�
 
 ## 이번 작업의 주요 내용
 
+### 0. 제품 소개 랜딩 페이지
+
+- TubePlanner AI의 가치와 핵심 사용자를 설명하는 제품 소개 페이지 추가
+- 시장 문제, 4단계 작동 방식, 핵심 기능, 비교표, FAQ, 최종 CTA 구성
+- 제품 소개 페이지의 CTA에서 기존 분석 앱(`/app`)으로 바로 이동
+- 실제 앱 화면을 활용한 반응형 제품 쇼케이스 제공
+
 ### 1. 4단계 콘텐츠 기획 흐름 구현
 
 1. 키워드, 분석 기간, 영상 수 입력
@@ -80,6 +87,9 @@ python -m http.server 4173 --directory dist
 │  └─ hosting.json
 ├─ dist/
 │  ├─ index.html
+│  ├─ landing.html
+│  ├─ landing.css
+│  ├─ landing.js
 │  ├─ styles.css
 │  └─ app.js
 ├─ docs/

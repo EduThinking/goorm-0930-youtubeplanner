@@ -10,6 +10,10 @@
   "routes": [
     {
       "src": "/",
+      "dest": "/dist/landing.html"
+    },
+    {
+      "src": "/app",
       "dest": "/dist/index.html"
     },
     {
