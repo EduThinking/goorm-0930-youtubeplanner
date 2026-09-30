@@ -1,14 +1,14 @@
 const videos=[
-['초보자도 10분 만에 끝내는 생성형 AI','AI 실험 연구소','2026.09.12','82,400','4,120','4.8%'],
-['직장인이 꼭 알아야 할 AI 자동화 7가지','프로덕티비티 랩','2026.09.14','71,200','3,870','3.9%'],
-['Claude로 보고서 3배 빨리 쓰는 법','퓨처크리에이터 TV','2026.09.11','65,000','3,420','5.1%'],
-['10분 만에 끝내는 AI 실무 꿀팁','데이터 드리븐','2026.09.16','48,900','3,260','4.6%'],
-['기획서 쓸 때 바로 쓰는 프롬프트','스마트 워크 클럽','2026.09.17','42,100','3,007','5.4%'],
-['ChatGPT vs Claude, 실무 비교','AI 리뷰 노트','2026.09.09','58,300','2,915','4.2%'],
-['이메일 업무를 AI에 맡겨봤습니다','일잘러 연구소','2026.09.07','50,400','2,800','4.9%'],
-['엑셀 분석, 이제 수식 없이 하세요','오피스 메이커','2026.09.03','61,200','2,550','3.8%'],
-['생성형 AI 입문자를 위한 완벽 가이드','테크 쉬운말','2026.08.29','69,100','2,303','4.1%'],
-['무료 AI 도구 7개, 솔직 비교','도구상자','2026.08.24','73,500','2,040','4.0%']
+{id:'mMgCEJEAm54',title:'올인원 클로드코워크 마스터 강의',channel:'신영선의 AI탐구',topic:'Claude · 업무 자동화'},
+{id:'ZMpiogq79Dw',title:'챗GPT 200% 활용하는 방법',channel:'신영선의 AI탐구',topic:'ChatGPT · 비즈니스'},
+{id:'RrU-AfgWb5U',title:"10분 만에 챗GPT '제대로' 쓰는 법",channel:'노마드윤',topic:'프롬프트 · 입문'},
+{id:'Fp8uIj0X_MA',title:'AI 왕기초 챗GPT 10분 기본 완성',channel:'에이커, 돈이되는 AI와 이커머스',topic:'ChatGPT · 왕초보'},
+{id:'R2IxUDVM48g',title:'ChatGPT를 구글 시트에서 활용하기',channel:'일잘러 장피엠',topic:'Google Sheets · 자동화'},
+{id:'6IwATR9KOAo',title:'최신 챗GPT를 내 업무에 적용하는 방법',channel:'일잘러 장피엠',topic:'업무 활용 · 생산성'},
+{id:'DAGAPV1qef8',title:'챗GPT, 제대로 사용하려면 이 영상만 보세요!',channel:'김덕진의 뉴스덕',topic:'사용법 · 활용 전략'},
+{id:'c9K6dNrsC4o',title:'대부분은 시도도 안 해본 챗GPT 숨겨진 활용법',channel:'홍아린 AI',topic:'AI 실전 활용'},
+{id:'MxGG5dzj6So',title:'챗GPT 왕초보 완전정복 1편',channel:'디지털 해결사',topic:'입문 · 튜토리얼'},
+{id:'GVd-s4yhNHI',title:'챗GPT로 데이터 분석하는 방법',channel:'AI 사용 설명서',topic:'데이터 분석'}
 ];
 const plans=[
 {type:'교육형',score:94,title:'직장인이 꼭 알아야 할 생성형 AI 업무자동화 7가지',target:'AI를 업무에 바로 적용하고 싶은 직장인',reason:'업무자동화·Claude 주제의 높은 조회 속도와 “7가지” 제목 패턴을 결합했습니다.',outline:['퇴근을 2시간 앞당기는 AI 활용 핵심','ChatGPT와 Claude의 결정적 차이','이메일 3초 만에 작성하기','50페이지 PDF 보고서 요약','Excel 데이터 오류 분석 자동화','슬라이드 발표자료 뼈대 만들기','무료 프롬프트 템플릿과 Q&A']},
@@ -23,7 +23,7 @@ document.querySelectorAll('[data-section]').forEach(b=>b.addEventListener('click
 document.querySelectorAll('.segment').forEach(group=>group.addEventListener('click',e=>{if(e.target.tagName==='BUTTON'){group.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));e.target.classList.add('selected')}}));
 document.getElementById('keywordChips').addEventListener('click',e=>{const b=e.target.closest('button');if(b)document.getElementById('keyword').value=b.dataset.keyword});
 document.getElementById('analyzeForm').addEventListener('submit',e=>{e.preventDefault();currentKeyword=document.getElementById('keyword').value.trim()||'생성형 AI 교육';document.querySelectorAll('.live-keyword').forEach(x=>x.textContent=currentKeyword);document.getElementById('loadingKeyword').textContent=currentKeyword;show('loading');const messages=['관련 영상 데이터를 정리하는 중…','조회 속도와 참여율을 계산하는 중…','AI가 성공 패턴과 콘텐츠 갭을 찾는 중…'];let i=0;const timer=setInterval(()=>{i++;if(i<messages.length)document.getElementById('loadingText').textContent=messages[i];else{clearInterval(timer);show('market');toast('50개 영상의 샘플 분석이 완료되었습니다.')}},800)});
-document.getElementById('videoRows').innerHTML=videos.map((v,i)=>`<tr><td>${String(i+1).padStart(2,'0')}</td><td><span class="video-title">${v[0]}<small>${i%2?'실전 사례':'AI 활용 가이드'}</small></span></td><td>${v[1]}</td><td>${v[2]}</td><td>${v[3]}</td><td>↗ ${v[4]}</td><td>${v[5]}</td></tr>`).join('');
+document.getElementById('videoRows').innerHTML=videos.map((v,i)=>{const url=`https://www.youtube.com/watch?v=${v.id}`;return `<tr><td>${String(i+1).padStart(2,'0')}</td><td><div class="video-cell"><a class="thumb-link" href="${url}" target="_blank" rel="noopener noreferrer" aria-label="${v.title} YouTube에서 보기"><img class="video-thumb" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="${v.title} 썸네일" loading="lazy"></a><a class="video-title" href="${url}" target="_blank" rel="noopener noreferrer">${v.title}<small>YouTube 공개 영상</small></a></div></td><td>${v.channel}</td><td><span class="topic-badge">${v.topic}</span></td><td><a class="watch-link" href="${url}" target="_blank" rel="noopener noreferrer"><span>▶</span> 영상 보기</a></td></tr>`}).join('');
 function renderPlans(){const available=currentType==='전체'?plans:plans.filter(p=>p.type===currentType);const first=available[0]||plans[0];document.getElementById('featuredPlan').innerHTML=`<div class="plan-head"><div><small>[AI] ${first.type} · RECOMMENDED</small><h2>${first.title}</h2></div><span class="potential">예상 점수 ${first.score}/100</span></div><div class="evidence"><b>데이터 분석 근거</b><br>${first.reason}</div><p><b>타깃:</b> ${first.target}</p><div class="outline">${(first.outline||['문제 상황과 시청자 공감','핵심 도구와 선택 기준','실제 업무 적용 데모','주의할 점과 실패 사례','즉시 실행 체크리스트']).map(x=>`<div>${x}</div>`).join('')}</div>`;document.getElementById('planGrid').innerHTML=available.slice(1).map(p=>`<article class="plan-card"><div class="meta"><span>${p.type}</span><span>${p.score}/100</span></div><h3>${p.title}</h3><p><b>타깃</b> · ${p.target}</p><p>${p.reason}</p></article>`).join('')||plans.filter(p=>p!==first).slice(0,2).map(p=>`<article class="plan-card"><div class="meta"><span>${p.type}</span><span>${p.score}/100</span></div><h3>${p.title}</h3><p>${p.reason}</p></article>`).join('')}
 document.getElementById('typeFilter').addEventListener('click',e=>{if(e.target.tagName==='BUTTON'){document.querySelectorAll('#typeFilter button').forEach(b=>b.classList.remove('selected'));e.target.classList.add('selected');currentType=e.target.textContent;renderPlans()}});
 document.getElementById('regenerate').addEventListener('click',()=>{const btn=document.getElementById('regenerate');btn.textContent='✦ 기획안 생성 중…';btn.disabled=true;setTimeout(()=>{plans.forEach(p=>p.score=Math.max(84,Math.min(98,p.score+(Math.random()>.5?1:-1))));renderPlans();btn.textContent='⚡ 이 조건으로 다시 기획하기';btn.disabled=false;toast(`${currentType} 조건으로 기획안을 새로 구성했습니다.`)},900)});
